@@ -12,20 +12,22 @@
 The objective of Problem Statement 1 (PS1) is to design an adaptive intelligent agent
 that can learn optimal behavior in a dynamic and uncertain environment.
 
-AgentX addresses this by using Reinforcement Learning to navigate grid-based mazes,
-learning from interaction with the environment and adapting its policy over time.
+AgentX addresses this by applying Reinforcement Learning to a grid-based maze
+environment, where the agent learns optimal navigation policies through interaction,
+reward feedback, and iterative improvement.
 
 ---
 
 ## Approach Overview
-AgentX is built using a model-free reinforcement learning approach.
+AgentX is implemented using a model-free reinforcement learning approach.
 
-- **Environment:** Grid-based maze with free cells, obstacles, and a goal
-- **Agent:** Q-Learning based agent
-- **State Space:** Agent position represented as (row, column)
+- **Environment:** Grid-based maze with free cells, obstacles, and a goal state
+- **Agent:** Q-Learning agent
+- **State Space:** Agent position represented as `(row, column)`
 - **Action Space:** Up, Down, Left, Right
-- **Learning Strategy:** ε-greedy exploration with exploitation
-- **Adaptation:** Retraining and transfer learning across different maze configurations
+- **Learning Strategy:** ε-greedy exploration and exploitation
+- **Adaptation:** Retraining and transfer learning across different maze sizes
+- **Evaluation:** Greedy policy execution after training
 
 ---
 
@@ -33,13 +35,25 @@ AgentX is built using a model-free reinforcement learning approach.
 - Q-Learning
 - ε-Greedy Exploration Strategy
 - Greedy Policy Evaluation
-- Transfer Learning via Q-table reuse
-- BFS-based Maze Solvability Check
+- Transfer Learning using historical Q-tables
+- BFS-based Maze Solvability Checking
+
+---
+
+## Features Implemented
+- Random solvable M×N maze generation
+- Built-in example mazes for quick demonstration
+- Automated training reward tracking
+- Greedy path visualization
+- Training convergence estimation
+- Automatic report generation (JSON & TXT)
+- Cross-run performance comparison
+- Persistent run history tracking
 
 ---
 
 ## Setup Instructions
 ```bash
 git clone https://github.com/SREEHARSHITHREDDY/agentx--Team-Karmanye--ps1.git
-cd agentx-team-karmanye-ps1
+cd agentx--Team-Karmanye--ps1
 pip install -r requirements.txt
