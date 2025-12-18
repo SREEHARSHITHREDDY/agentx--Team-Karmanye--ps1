@@ -40,6 +40,6 @@ AgentX is built using a model-free reinforcement learning approach.
 
 ## Setup Instructions
 ```bash
-git clone https://github.com/<org>/agentx-team-karmanye-ps1.git
+git clone https://github.com/SREEHARSHITHREDDY/agentx--Team-Karmanye--ps1.git
 cd agentx-team-karmanye-ps1
 pip install -r requirements.txt
