@@ -1,0 +1,8 @@
+AgentX Final Evaluation Metrics (PS1):
+
+Algorithm: Q-Learning  
+Maze Type: Dynamic Grid Maze  
+Episodes: 600  
+Convergence: Observed  
+Greedy Policy: Successful  
+Transfer learning enabled
