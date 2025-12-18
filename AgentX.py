@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-
-
-import os, csv, json, pickle, hashlib, random, time
+import os, json, pickle, hashlib, random, time
 from collections import defaultdict, deque
 from datetime import datetime
 
@@ -56,14 +53,6 @@ def save_figure(fig, path):
 
 # ------------------- Maze helpers -------------------
 
-def load_maze_from_csv(path):
-    maze=[]
-    with open(path, "r") as f:
-        rdr = csv.reader(f)
-        for row in rdr:
-            if not row: continue
-            maze.append([int(x.strip()) for x in row])
-    return maze
 
 def is_solvable(maze, start=(0,0)):
     rows, cols = len(maze), len(maze[0])
@@ -452,13 +441,12 @@ def run_on_maze(maze, label=None, episodes=600, transfer_init=False, animate=Tru
 
 def print_menu():
     print("\nAgentX — Adaptive Maze RL (Problem Statement 1)")
-    print("1) Load maze from CSV file")
-    print("2) Generate random solvable maze M N (you input M N only)")
-    print("3) Use example mazes (quick demo)")
-    print("4) Show history summary (past runs)")
-    print("5) Exit")
-    print("6) Generate Auto Analysis Report (all runs) <-- NEW")
-    return input("Choose (1-6): ").strip()
+    print("1) Generate random solvable maze M N (you input M N only)")
+    print("2) Use example mazes (quick demo)")
+    print("3) Show history summary (past runs)")
+    print("4) Exit")
+    print("5) Generate Auto Analysis Report (all runs) <-- NEW")
+    return input("Choose (1-5): ").strip()
 
 def input_maze_manual():
     print("Enter maze size M N (e.g. '5 7'):")
@@ -525,16 +513,6 @@ def interactive():
     while True:
         c = print_menu()
         if c == '1':
-            path = input("CSV path: ").strip()
-            if not os.path.exists(path):
-                print("File not found."); continue
-            maze = load_maze_from_csv(path)
-            lbl = input("Label (optional): ").strip() or None
-            episodes = int(input("Episodes (default 600): ").strip() or 600)
-            ti = input("Transfer-init? (y/n, default n): ").strip().lower() == 'y'
-            animate = input("Animate final path? (y/n, default y): ").strip().lower() != 'n'
-            run_on_maze(maze, label=lbl, episodes=episodes, transfer_init=ti, animate=animate)
-        elif c == '2':
             try:
                 s = input("Enter M N (e.g. '10 12'): ").strip(); m,n = map(int, s.split())
             except Exception:
@@ -549,7 +527,7 @@ def interactive():
             ti = input("Transfer-init? (y/n, default n): ").strip().lower() == 'y'
             animate = input("Animate? (y/n, default y): ").strip().lower() != 'n'
             run_on_maze(maze, label=lbl, episodes=episodes, transfer_init=ti, animate=animate)
-        elif c == '3':
+        elif c == '2':
             print("Using example mazes")
             maze1 = [
              [0,0,0,0,0,0,1,0,0,0],
@@ -574,16 +552,16 @@ def interactive():
             animate = input("Animate? (y/n, default y): ").strip().lower() != 'n'
             run_on_maze(maze1, label="example_10x10", episodes=episodes, transfer_init=False, animate=animate)
             run_on_maze(maze2, label="example_5x7", episodes=episodes, transfer_init=True, animate=animate)
-        elif c == '4':
+        elif c == '3':
             show_history_summary()
-        elif c == '5':
+        elif c == '4':
             print("Exiting. Good luck!")
             break
-        elif c == '6':
+        elif c == '5':
             print("Generating overall auto analysis report for all runs...")
             generate_overall_report_all_runs()
         else:
-            print("Choose a valid option (1-6).")
+            print("Choose a valid option (1-5).")
 
 if __name__ == "__main__":
     interactive()
