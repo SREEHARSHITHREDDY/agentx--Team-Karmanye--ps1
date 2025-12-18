@@ -1,22 +1,5 @@
 #!/usr/bin/env python3
-"""
-AgentX — Complete submission script with Auto Analysis & Reporting
 
-Features (adds to previous):
-- After training, saves rewards array for run (outputs/rewards_<label>_<ts>.npy)
-- Auto-computes evaluation metrics:
-    * success (does greedy policy reach goal)
-    * greedy_path_length (steps)
-    * final_score, mean_last50, std_reward
-    * convergence_episode (estimated)
-    * improvement vs previous runs (if any)
-- Generates a report (outputs/report_<label>_<ts>.json and .txt)
-- Plots comparisons of training curves across previous runs if available
-- Adds menu option "6) Generate Auto Analysis Report (all runs)"
-
-Usage:
-    python agentx_complete_submission_with_analysis.py
-"""
 
 import os, csv, json, pickle, hashlib, random, time
 from collections import defaultdict, deque
